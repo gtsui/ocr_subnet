@@ -108,13 +108,19 @@ def section_reward(label: dict, pred: dict, alpha_p=1.0, alpha_f=1.0, alpha_t=1.
         'font': get_font_reward(label['font'], pred.get('font')),
     }
 
-    bt.logging.info("alpha_t: " + str(alpha_t))
-    bt.logging.info("reward_text: " + str(reward['text']))
-    bt.logging.info("alpha_p: " + str(alpha_p))
-    bt.logging.info("reward_position: " + str(reward['position']))
-    bt.logging.info("alpha_f: " + str(alpha_f))
-    bt.logging.info("reward_font: " + str(reward['font']))
-    reward['total'] = (alpha_t * reward['text'] + alpha_p * reward['position'] + alpha_f * reward['font']) / (alpha_p + alpha_f + alpha_t)
+    #bt.logging.info("alpha_t: " + str(alpha_t))
+    #bt.logging.info("reward_text: " + str(reward['text']))
+    #bt.logging.info("alpha_p: " + str(alpha_p))
+    #bt.logging.info("reward_position: " + str(reward['position']))
+    #bt.logging.info("alpha_f: " + str(alpha_f))
+    #bt.logging.info("reward_font: " + str(reward['font']))
+
+    if all(x is not None for x in [alpha_t, alpha_p, alpha_f]):            
+        reward['total'] = (alpha_t * reward['text'] + alpha_p * reward['position'] + alpha_f * reward['font']) / (alpha_p + alpha_f + alpha_t)
+        bt.logging.info("reward: " + str(reward['total']))
+    else:
+        bt.logging.info("reward: " + 0)
+        reward['total'] = 0
 
     if verbose:
         bt.logging.info(', '.join([f"{k}: {v:.3f}" for k,v in reward.items()]))
