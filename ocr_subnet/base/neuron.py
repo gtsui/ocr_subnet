@@ -69,6 +69,7 @@ class BaseNeuron(ABC):
         self.device = self.config.neuron.device
 
         # Log the configuration for reference.
+        bt.logging.on()    
         bt.logging.info(self.config)
 
         # Build Bittensor objects
@@ -158,11 +159,13 @@ class BaseNeuron(ABC):
         ) > self.config.neuron.epoch_length
 
     def save_state(self):
-        bt.logging.warning(
-            "save_state() not implemented for this neuron. You can implement this function to save model checkpoints or other useful data."
-        )
+        pass
+        #bt.logging.warning(
+        #    "save_state() not implemented for this neuron. You can implement this function to save model checkpoints or other useful data."
+        #)
 
     def load_state(self):
-        bt.logging.warning(
-            "load_state() not implemented for this neuron. You can implement this function to load model checkpoints or other useful data."
-        )
+        pass
+        #bt.logging.warning(
+        #    "load_state() not implemented for this neuron. You can implement this function to load model checkpoints or other useful data."
+        #)
