@@ -120,7 +120,7 @@ def section_reward(label: dict, pred: dict, alpha_p=1.0, alpha_f=1.0, alpha_t=1.
         bt.logging.info("reward: " + str(reward['total']))
     else:
         bt.logging.info("reward: " + str(0))
-        reward['total'] = 0
+        reward['total'] = 0.01
 
     if verbose:
         bt.logging.info(', '.join([f"{k}: {v:.3f}" for k,v in reward.items()]))
