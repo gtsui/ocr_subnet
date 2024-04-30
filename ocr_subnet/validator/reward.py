@@ -119,7 +119,7 @@ def section_reward(label: dict, pred: dict, alpha_p=1.0, alpha_f=1.0, alpha_t=1.
         reward['total'] = (alpha_t * reward['text'] + alpha_p * reward['position'] + alpha_f * reward['font']) / (alpha_p + alpha_f + alpha_t)
         bt.logging.info("reward: " + str(reward['total']))
     else:
-        bt.logging.info("reward: " + 0)
+        bt.logging.info("reward: " + str(0))
         reward['total'] = 0
 
     if verbose:
